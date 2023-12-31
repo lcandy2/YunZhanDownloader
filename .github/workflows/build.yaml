@@ -1,0 +1,26 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install dependencies
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+        run_install: true
+
+    - name: Build
+      run: pnpm build
+
+    - name: Commit and push
+      uses: actions-js/push@v1.4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        message: 'action: build script'
