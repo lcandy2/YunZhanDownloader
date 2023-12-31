@@ -53,9 +53,9 @@ jobs:
         name: yunzhan-downloader
         path: user-js/yunzhan365.com
 
-    - name: Commit and push
+    - name: Commit and push to user.js
       uses: actions-js/push@v1.4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        directory: user-js
+        repository: lcandy2/user.js
         message: 'action: Update YunZhanDownloader'
