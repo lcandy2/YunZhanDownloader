@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-upload:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,7 +31,7 @@ jobs:
         message: 'action: build script'
 
     - name: Format dist files
-      run: cp README.md ./export/YunZhan-Downloader.md && cp ./dist/yunzhan-downloader.user.js ./export/YunZhan-Downloader.user.js 
+      run: mkdir export && cp README.md ./export/YunZhan-Downloader.md && cp ./dist/yunzhan-downloader.user.js ./export/YunZhan-Downloader.user.js 
   
     - name: Upload artifact
       uses: actions/upload-artifact@v2
@@ -43,8 +43,8 @@ jobs:
     
 
 
-  deploy:
-    needs: build-and-upload
+  push-to-userjs:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: Checkout user.js repository
