@@ -1,0 +1,20 @@
+{
+  "name": "yunzhan-downloader",
+  "private": true,
+  "version": "1.0.3",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "unplugin-auto-import": "^0.17.3",
+    "vite": "^4.4.8",
+    "vite-plugin-monkey": "^3.4.0"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "jspdf": "^2.5.1"
+  }
+}
