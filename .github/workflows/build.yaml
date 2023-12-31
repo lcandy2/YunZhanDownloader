@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-upload:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,3 +29,27 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         message: 'action: build script'
+
+  deploy:
+    needs: build-and-upload
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout user.js repository
+      uses: actions/checkout@v4
+      with:
+        repository: lcandy2/user.js
+        token: ${{ secrets.ACCESS_TOKEN }} # Make sure to set this in your repo secrets
+        path: user-js
+
+    - name: Download artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: yunzhan-downloader
+        path: user-js/yunzhan365.com
+
+    - name: Commit and push
+      uses: actions-js/push@v1.4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        directory: user-js
+        message: 'action: Update YunZhanDownloader'
