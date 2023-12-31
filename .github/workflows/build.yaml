@@ -24,6 +24,12 @@ jobs:
     - name: Build
       run: pnpm build
 
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: yunzhan-downloader
+        path: ./dist/yunzhan-downloader.user.js
+
     - name: Commit and push
       uses: actions-js/push@v1.4
       with:
