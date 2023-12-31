@@ -24,17 +24,24 @@ jobs:
     - name: Build
       run: pnpm build
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: yunzhan-downloader
-        path: ./dist/yunzhan-downloader.user.js
-
     - name: Commit and push
       uses: actions-js/push@v1.4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         message: 'action: build script'
+
+    - name: Format dist files
+      run: cp README.md ./export/YunZhan-Downloader.md && cp ./dist/yunzhan-downloader.user.js ./export/YunZhan-Downloader.user.js 
+  
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: yunzhan-downloader
+        path: |
+          ./export/YunZhan-Downloader.md
+          ./export/YunZhan-Downloader.user.js
+    
+
 
   deploy:
     needs: build-and-upload
@@ -45,18 +52,18 @@ jobs:
       with:
         repository: lcandy2/user.js
         token: ${{ secrets.ACCESS_TOKEN }} # Make sure to set this in your repo secrets
-        path: user-js
+        path: ./export/user-js
 
     - name: Download artifact
       uses: actions/download-artifact@v2
       with:
         name: yunzhan-downloader
-        path: user-js/yunzhan365.com
+        path: ./export/user-js/yunzhan365.com
 
     - name: Commit and push to user.js
       uses: actions-js/push@v1.4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         repository: lcandy2/user.js
-        directory: user-js
+        directory: ./export/user-js
         message: 'action: Update YunZhanDownloader'
