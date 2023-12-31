@@ -15,6 +15,7 @@ export default defineConfig({
       entry: 'src/main.js',
       userscript: {
         name: '云展网PDF下载 YunZhanDownloader',
+        description: '从云展网下载PDF书籍',
         icon: 'https://book.yunzhan365.com/favicon.ico',
         author: 'lcandy2',
         namespace: 'https://github.com/lcandy2/YunZhanDownloader',

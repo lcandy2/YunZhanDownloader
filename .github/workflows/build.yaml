@@ -10,11 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install dependencies
-      uses: pnpm/action-setup@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v3
       with:
-        version: 8
-        run_install: true
+        node-version: '20'
+
+    - name: Use pnpm
+      uses: pnpm/action-setup@v2.4.0
+      with:
+        version: '8'
+
+    - name: List directory contents
+      run: ls -la
+      
 
     - name: Build
       run: pnpm build
