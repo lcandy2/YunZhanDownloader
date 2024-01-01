@@ -35,7 +35,7 @@ jobs:
         mkdir export
         cp README.md ./export/YunZhan-Downloader.md
         cp ./dist/yunzhan-downloader.user.js ./export/YunZhan-Downloader.user.js
-        cp ./LICENSE ./export/LICENSE
+        cp ./LICENSE ./export/YunZhan-Downloader.LICENSE
         mkdir export/assests
         cp ./assests/download-button.png ./export/assests/download-button.png
         cp ./assests/downloading-dialog.png ./export/assests/downloading-dialog.png
@@ -47,7 +47,7 @@ jobs:
         path: |
           ./export/YunZhan-Downloader.md
           ./export/YunZhan-Downloader.user.js
-          ./export/LICENSE
+          ./export/YunZhan-Downloader.LICENSE
           ./export/assests/download-button.png
           ./export/assests/downloading-dialog.png
 
