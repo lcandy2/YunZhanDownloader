@@ -21,6 +21,7 @@ export default defineConfig({
         namespace: 'https://github.com/lcandy2/YunZhanDownloader',
         match: ['*://book.yunzhan365.com/*/*/mobile/*'],
         "run-at": 'document-end',
+        license: 'MIT',
       },
       build: {
         externalGlobals: {
