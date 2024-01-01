@@ -31,7 +31,12 @@ jobs:
         message: 'action: build script'
 
     - name: Format dist files
-      run: mkdir export && cp README.md ./export/YunZhan-Downloader.md && cp ./dist/yunzhan-downloader.user.js ./export/YunZhan-Downloader.user.js 
+      run: |
+        mkdir export
+        cp README.md ./export/YunZhan-Downloader.md
+        cp ./dist/yunzhan-downloader.user.js ./export/YunZhan-Downloader.user.js
+        cp ./assests/download-button.png ./export/assests/download-button.png
+        cp ./assests/downloading-dialog.png ./export/assests/downloading-dialog.png
   
     - name: Upload artifact
       uses: actions/upload-artifact@v2
@@ -40,8 +45,8 @@ jobs:
         path: |
           ./export/YunZhan-Downloader.md
           ./export/YunZhan-Downloader.user.js
-    
-
+          ./export/assests/download-button.png
+          ./export/assests/downloading-dialog.png
 
   push-to-userjs:
     needs: build
