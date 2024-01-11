@@ -25,8 +25,8 @@ export default defineConfig({
       },
       build: {
         externalGlobals: {
-          jspdf: cdn.unpkg('jspdf', 'dist/jspdf.umd.min.js'),
-          jquery: cdn.jsdelivr('jQuery', 'dist/jquery.min.js'),
+          jspdf: cdn.npmmirror('jspdf', 'dist/jspdf.umd.min.js'),
+          jquery: cdn.npmmirror('jQuery', 'dist/jquery.min.js'),
         },
       },
     }),
